@@ -1,0 +1,37 @@
+// ignore_for_file: prefer_single_quotes
+
+class AppIcons {
+  AppIcons._();
+
+  /// Assets for bird
+  /// assets/icons/bird.svg
+  static const String bird = "assets/icons/bird.svg";
+
+  /// Assets for cloud
+  /// assets/icons/cloud.svg
+  static const String cloud = "assets/icons/cloud.svg";
+
+  /// Assets for logo
+  /// assets/icons/logo.svg
+  static const String logo = "assets/icons/logo.svg";
+
+  /// Assets for moon
+  /// assets/icons/moon.svg
+  static const String moon = "assets/icons/moon.svg";
+
+  /// Assets for star
+  /// assets/icons/star.svg
+  static const String star = "assets/icons/star.svg";
+
+  /// Assets for sun
+  /// assets/icons/sun.svg
+  static const String sun = "assets/icons/sun.svg";
+
+  /// Assets for tree1
+  /// assets/icons/tree1.svg
+  static const String tree1 = "assets/icons/tree1.svg";
+
+  /// Assets for tree2
+  /// assets/icons/tree2.svg
+  static const String tree2 = "assets/icons/tree2.svg";
+}
