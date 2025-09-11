@@ -19,7 +19,7 @@ class MindersApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.transparent,
         textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
       ),
-      home: SplashScreen(),
+      home: MorningView(),
     );
   }
 }
