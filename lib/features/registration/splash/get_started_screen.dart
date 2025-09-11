@@ -4,6 +4,7 @@ import 'package:minders/core/utils/assets/app_frames.dart';
 import 'package:minders/core/utils/assets/app_images.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
+import 'package:minders/features/common/custom_elevatedButton.dart';
 import 'package:minders/features/registration/login_screen/login_screen.dart';
 
 class GetStartedScreen extends StatelessWidget {
@@ -40,25 +41,16 @@ class GetStartedScreen extends StatelessWidget {
                         width: size.width,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 21.0),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(38),
-                              ),
-                              padding: EdgeInsets.symmetric(vertical: 24),
-                            ),
+                          child: CustomElevatedButton(
+                            title: 'Get Started',
                             onPressed: () {
-                              Navigator.pushReplacement(
+                              Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => const LoginScreen(),
                                 ),
                               );
                             },
-                            child: Text(
-                              'Get Started',
-                              style: AppTextStyles.text14w500black,
-                            ),
                           ),
                         ),
                       ),

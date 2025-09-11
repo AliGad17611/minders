@@ -43,6 +43,10 @@ class AppFrames {
   /// assets/frames/sunny_group.svg
   static const String sunny_group = "assets/frames/sunny_group.svg";
 
+  /// Assets for top_cropped
+  /// assets/frames/top_cropped.svg
+  static const String top_cropped = "assets/frames/top_cropped.svg";
+
   /// Assets for water
   /// assets/frames/water.svg
   static const String water = "assets/frames/water.svg";

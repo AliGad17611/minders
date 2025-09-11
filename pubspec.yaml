@@ -32,8 +32,11 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.0
+
   google_fonts: ^6.3.0
   time_picker_spinner: ^1.0.2
+  animations: ^2.0.11
+
 
 dev_dependencies:
 
@@ -62,24 +65,24 @@ flutter:
     - assets/icons/
     - assets/images/
 
-# flutter_assets:
-#   assets_path: assets/icons/
-#   output_path: lib/core/utils/assets/
-#   filename: app_icons.dart
-#   classname: AppIcons
-#   field_prefix: null
-  # flutter_assets:
-  #   assets_path: assets/frames/
-  #   output_path: lib/core/utils/assets/
-  #   filename: app_frames.dart
-  #   classname: AppFrames
-  #   field_prefix: null
 flutter_assets:
-  assets_path: assets/images/
+  assets_path: assets/icons/
   output_path: lib/core/utils/assets/
-  filename: app_images.dart
-  classname: AppImages
+  filename: app_icons.dart
+  classname: AppIcons
   field_prefix: null
+# flutter_assets:
+#   assets_path: assets/frames/
+#   output_path: lib/core/utils/assets/
+#   filename: app_frames.dart
+#   classname: AppFrames
+#   field_prefix: null
+# flutter_assets:
+#   assets_path: assets/images/
+#   output_path: lib/core/utils/assets/
+#   filename: app_images.dart
+#   classname: AppImages
+#   field_prefix: null
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
