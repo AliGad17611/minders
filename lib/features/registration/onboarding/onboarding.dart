@@ -63,14 +63,33 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        shape: CircleBorder(),
+        splashColor: Colors.transparent,
+        highlightElevation: 0,
+        hoverElevation: 0,
+        shape: CircleBorder(
+          eccentricity: 0.5,
+          side: BorderSide(
+            color: AppColors.purpleAccent,
+            width: 3,
+            style: BorderStyle.solid,
+          ),
+        ),
         elevation: 0,
-        backgroundColor: AppColors.purpleSecondary,
+        backgroundColor: Colors.transparent,
         onPressed: _nextPage,
-        child: Icon(
-          Icons.arrow_forward_ios,
-          size: 18,
-          color: AppColors.whiteTextColors,
+        child: Container(
+          margin: EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: AppColors.purpleAccent,
+          ),
+          child: Center(
+            child: Icon(
+              Icons.arrow_forward_ios,
+              size: 18,
+              color: AppColors.whiteTextColors,
+            ),
+          ),
         ),
       ),
       body: AnimatedBuilder(
@@ -146,7 +165,6 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
 
 class _OnboardingContent extends StatelessWidget {
   const _OnboardingContent({
-    super.key,
     required this.title,
     required this.description,
     required this.image,
