@@ -12,6 +12,7 @@ class MindersApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Minders App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.purpleMain),

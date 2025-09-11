@@ -11,6 +11,14 @@ class AppIcons {
   /// assets/icons/cloud.svg
   static const String cloud = "assets/icons/cloud.svg";
 
+  /// Assets for facebook
+  /// assets/icons/facebook.svg
+  static const String facebook = "assets/icons/facebook.svg";
+
+  /// Assets for google
+  /// assets/icons/google.svg
+  static const String google = "assets/icons/google.svg";
+
   /// Assets for logo
   /// assets/icons/logo.svg
   static const String logo = "assets/icons/logo.svg";
@@ -34,4 +42,5 @@ class AppIcons {
   /// Assets for tree2
   /// assets/icons/tree2.svg
   static const String tree2 = "assets/icons/tree2.svg";
+
 }
