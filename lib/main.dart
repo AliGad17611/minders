@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:minders/feature/creating_habit/views/morning_view.dart';
+import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/features/creating_habit/views/morning_view.dart';
 
 void main() {
   runApp(const MindersApp());
@@ -16,7 +17,7 @@ class MindersApp extends StatelessWidget {
       title: 'Minders App',
       theme: ThemeData.dark().copyWith(
         primaryColor: Color(0xFF8E97FD),
-        scaffoldBackgroundColor: Colors.transparent,
+        scaffoldBackgroundColor: AppColors.purpleMain,
         textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
       ),
       home: MorningView(),

@@ -29,18 +29,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
-  cupertino_icons: ^1.0.8
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.0
-  flutter_svg: ^2.0.17
   google_fonts: ^6.3.0
   time_picker_spinner: ^1.0.2
 
 dev_dependencies:
-  flutter_lints: ^5.0.0
-  flutter_test:
-    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -60,6 +55,7 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/frames/
@@ -84,21 +80,6 @@ flutter_assets:
   filename: app_images.dart
   classname: AppImages
   field_prefix: null
-    - assets/frames/
-    - assets/icons/
-
-flutter_assets:
-  assets_path: assets/icons/
-  output_path: lib/core/utils/assets/
-  filename: app_icons.dart
-  classname: AppIcons
-  field_prefix: null
-  # flutter_assets:
-  #   assets_path: assets/frames/
-  #   output_path: lib/core/utils/assets/
-  #   filename: app_frames.dart
-  #   classname: AppFrames
-  #   field_prefix: null
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
