@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:minders/feature/creating_habit/views/morning_view.dart';
+import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/features/registration/splash/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MindersApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MindersApp extends StatelessWidget {
+  const MindersApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Minders App',
       theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.purpleMain),
       ),
-      home: MorningView(),
+      home: SplashScreen(),
     );
   }
 }
-
