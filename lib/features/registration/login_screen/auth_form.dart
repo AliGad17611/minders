@@ -12,14 +12,14 @@ class AuthFormScreen extends StatelessWidget {
     required this.title,
     required this.middleText,
     required this.bottomText,
-    this.onSubmit,
+
     required this.form,
     this.onChange,
   });
   final String title;
   final String middleText;
   final List<String> bottomText;
-  final VoidCallback? onSubmit;
+
   final Widget form;
   final VoidCallback? onChange;
 

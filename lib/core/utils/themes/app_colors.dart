@@ -9,7 +9,6 @@ class AppColors {
   static const Color babyBlue = Color(0xff9DCEFF);
   static const Color borderSecondary = Color(0xffEBEAEC);
   static const Color border = Color(0xffA1A4B2);
-
   static const Color backgroundSecondary = Color(0xffF2F3F7);
 
   static const Color whiteTextColors = Color(0xffFFFFFF);

@@ -3,9 +3,10 @@ import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/common/custom_elevatedButton.dart';
 import 'package:minders/features/common/custom_text_form_field.dart';
+import 'package:minders/features/registration/onboarding/onboarding.dart';
 
 import 'auth_form.dart';
-import 'login_form.dart';
+import 'login_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -16,7 +17,17 @@ class SignupScreen extends StatelessWidget {
       title: 'Create your account ',
       middleText: 'OR SIGN UP WITH EMAIL',
       bottomText: ['ALREADY have an account? ', 'Sign in'],
-      form: SignupForm(),
+      form: SignupForm(
+        onSubmit: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Onboarding(),
+            ),
+            (route) => false,
+          );
+        },
+      ),
       onChange: () {
         Navigator.pushReplacement(
           context,
@@ -30,7 +41,8 @@ class SignupScreen extends StatelessWidget {
 }
 
 class SignupForm extends StatefulWidget {
-  const SignupForm({super.key});
+  const SignupForm({super.key, this.onSubmit});
+  final VoidCallback? onSubmit;
 
   @override
   State<SignupForm> createState() => _SignupFormState();
@@ -124,7 +136,7 @@ class _SignupFormState extends State<SignupForm> {
 
   void _signUp() {
     if (_formKey.currentState!.validate()) {
-      // TODO: Implement login logic
+      widget.onSubmit?.call();
     }
   }
 }

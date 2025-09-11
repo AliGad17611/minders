@@ -5,7 +5,7 @@ import 'package:minders/core/utils/assets/app_images.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/common/custom_elevatedButton.dart';
-import 'package:minders/features/registration/login_screen/login_form.dart';
+import 'package:minders/features/registration/login_screen/login_screen.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});

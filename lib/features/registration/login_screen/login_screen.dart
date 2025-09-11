@@ -1,27 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/features/common/custom_elevatedButton.dart';
+import 'package:minders/features/common/custom_text_form_field.dart';
+import 'package:minders/features/registration/onboarding/onboarding.dart';
 
 import 'auth_form.dart';
-import 'login_form.dart';
-import 'sign_up_form.dart';
+import 'sign_up_screen.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AuthFormScreen(
-      title: 'Create your account ',
-      middleText: 'OR SIGN UP WITH EMAIL',
-      bottomText: ['ALREADY have an account? ', 'Sign in'],
-      form: SignupForm(),
+      title: 'Welcome Back!',
+      middleText: 'OR LOG IN WITH EMAIL',
+      bottomText: ['Don\'t have an account? ', 'Sign up'],
+      form: LoginForm(
+        onSubmit: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+              builder: (context) => Onboarding(),
+            ),
+            (route) => false,
+          );
+        },
+      ),
       onChange: () {
         Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => LoginScreen(),
-          ),
-        );
+            context,
+            MaterialPageRoute(
+              builder: (context) => SignupScreen(),
+            ));
       },
     );
+  }
+}
+
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key, this.onSubmit});
+  final VoidCallback? onSubmit;
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        spacing: 20,
+        children: [
+          CustomTextFormField(
+            controller: _emailController,
+            label: 'Email',
+            enabled: true,
+            isRequired: true,
+          ),
+          CustomTextFormField(
+            controller: _passwordController,
+            label: 'Password',
+            obscureText: true,
+            isRequired: true,
+          ),
+          SizedBox(height: 10),
+          CustomElevatedButton(
+            backgroundColor: AppColors.purpleAccent,
+            foregroundColor: AppColors.whiteTextColors,
+            title: 'LOG IN',
+            onPressed: _login,
+          ),
+        ],
+      ),
+    );
+  }
+
+  void _login() {
+    if (_formKey.currentState!.validate()) {
+      widget.onSubmit?.call();
+    }
   }
 }
