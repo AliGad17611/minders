@@ -3,13 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:minders/feature/creating_habit/views/morning_view.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MindersApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MindersApp extends StatelessWidget {
+  const MindersApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.transparent,
         textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
       ),
-      home: MorningView(),
+      home: SplashScreen(),
     );
   }
 }
