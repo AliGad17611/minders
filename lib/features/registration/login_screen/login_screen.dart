@@ -20,9 +20,7 @@ class LoginScreen extends StatelessWidget {
         onSubmit: () {
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-              builder: (context) => Onboarding(),
-            ),
+            MaterialPageRoute(builder: (context) => Onboarding()),
             (route) => false,
           );
         },
