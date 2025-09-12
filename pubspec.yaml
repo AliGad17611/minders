@@ -67,18 +67,18 @@ flutter:
     - assets/icons/
     - assets/images/
 
-flutter_assets:
-  assets_path: assets/icons/
-  output_path: lib/core/utils/assets/
-  filename: app_icons.dart
-  classname: AppIcons
-  field_prefix: null
 # flutter_assets:
-#   assets_path: assets/frames/
+#   assets_path: assets/icons/
 #   output_path: lib/core/utils/assets/
-#   filename: app_frames.dart
-#   classname: AppFrames
+#   filename: app_icons.dart
+#   classname: AppIcons
 #   field_prefix: null
+flutter_assets:
+  assets_path: assets/frames/
+  output_path: lib/core/utils/assets/
+  filename: app_frames.dart
+  classname: AppFrames
+  field_prefix: null
 # flutter_assets:
 #   assets_path: assets/images/
 #   output_path: lib/core/utils/assets/
