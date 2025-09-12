@@ -124,13 +124,6 @@ firebase-sdk.bat
 firebase_sdk_backup/
 
 
-# Firebase config files (platform-specific)
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-macos/Runner/GoogleService-Info.plist
-windows/firebase_app_id_file.json
-web/firebase-messaging-sw.js
-firebase.json
-firebase_options.dart
+
 
 releases/
