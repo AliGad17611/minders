@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:minders/core/utils/assets/app_frames.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
-import 'package:minders/features/registration/login_screen/login_screen.dart';
+import 'package:minders/features/creating_habit/views/morning_view.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -47,7 +47,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
       });
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        MaterialPageRoute(builder: (context) => const MorningView()),
       );
     } else {
       _animationController.forward().then((_) {
@@ -62,6 +62,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.whiteBackgroundColor,
       floatingActionButton: FloatingActionButton(
         splashColor: Colors.transparent,
         highlightElevation: 0,

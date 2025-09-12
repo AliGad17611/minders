@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -10,6 +11,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.foregroundColor,
     this.onPressed,
+    this.borderColor,
   });
 
   final String title;
@@ -17,7 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? foregroundColor;
   final VoidCallback? onPressed;
-
+  final Color? borderColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -27,7 +29,9 @@ class CustomElevatedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(38),
         ),
         padding: EdgeInsets.symmetric(vertical: 18, horizontal: 34),
-        backgroundColor: backgroundColor,
+        backgroundColor: backgroundColor ?? AppColors.whiteTextColors,
+        side: BorderSide(color: borderColor ?? AppColors.borderSecondary),
+        overlayColor: AppColors.purpleMain,
       ),
       onPressed: onPressed,
       child: Row(

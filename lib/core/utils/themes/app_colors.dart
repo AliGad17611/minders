@@ -13,6 +13,7 @@ class AppColors {
   static const Color whiteTextColors = Color(0xffFFFFFF);
   static const Color blackTextColors = Color(0xff3F414E);
 
+  static const Color whiteBackgroundColor = Color(0xFFFFFFFF);
   static const Color timePickerBackgroundColor = Color(0xFF3E4ACA);
 
   static const Color borderSecondary = Color(0xffEBEAEC);

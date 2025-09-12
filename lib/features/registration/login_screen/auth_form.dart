@@ -12,7 +12,6 @@ class AuthFormScreen extends StatelessWidget {
     required this.title,
     required this.middleText,
     required this.bottomText,
-
     required this.form,
     this.onChange,
   });
@@ -26,6 +25,7 @@ class AuthFormScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.whiteBackgroundColor,
       body: Stack(
         children: [
           SvgPicture.asset(AppFrames.top_cropped),
