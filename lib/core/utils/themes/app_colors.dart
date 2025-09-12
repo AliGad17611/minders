@@ -6,6 +6,7 @@ class AppColors {
   static const Color purpleMain = Color(0xff4D57C8);
   static const Color purpleAccent = Color(0xff8E97FD);
   static const Color purpleSecondary = Color(0xff92A3FD);
+
   static const Color babyBlue = Color(0xff9DCEFF);
 
   static const Color choiceButtonColor = Color(0xff7889DF);
@@ -22,6 +23,9 @@ class AppColors {
 
   static const Color shadedBlackTextColors = Color(0xff3F414E);
   static const Color tertiaryTextColors = Color(0xffA1A4B2);
+
+  static const Color purpleGradient1 = Color(0xff9dceff);
+  static const Color purpleGradient2 = Color(0xff92A3FD);
 
   static const Color errorTextColors = Color(0xFF990000);
 }
