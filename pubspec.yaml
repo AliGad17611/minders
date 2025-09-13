@@ -40,6 +40,9 @@ dependencies:
   hive_flutter: ^1.1.0
   intl: ^0.20.2
   time_picker_spinner: ^1.0.2
+  animations: ^2.0.11
+  introduction_screen: ^4.0.0
+  percent_indicator: ^4.2.5
 
 dev_dependencies:
   flutter_lints: ^5.0.0

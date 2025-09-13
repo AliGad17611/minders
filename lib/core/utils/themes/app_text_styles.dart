@@ -48,6 +48,12 @@ class AppTextStyles {
     color: AppColors.whiteTextColors,
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    );
+  
+  static const TextStyle text20w400Purple = TextStyle(
+    color: AppColors.purpleMain,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
   );
 
   static const TextStyle text16w300White = TextStyle(

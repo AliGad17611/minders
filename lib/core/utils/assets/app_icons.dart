@@ -11,9 +11,17 @@ class AppIcons {
   /// assets/icons/cloud.svg
   static const String cloud = "assets/icons/cloud.svg";
 
+  /// Assets for cycling
+  /// assets/icons/cycling.svg
+  static const String cycling = "assets/icons/cycling.svg";
+
   /// Assets for facebook
   /// assets/icons/facebook.svg
   static const String facebook = "assets/icons/facebook.svg";
+
+  /// Assets for foot
+  /// assets/icons/foot.svg
+  static const String foot = "assets/icons/foot.svg";
 
   /// Assets for google
   /// assets/icons/google.svg
@@ -42,5 +50,13 @@ class AppIcons {
   /// Assets for tree2
   /// assets/icons/tree2.svg
   static const String tree2 = "assets/icons/tree2.svg";
+
+  /// Assets for water
+  /// assets/icons/water.svg
+  static const String water = "assets/icons/water.svg";
+
+  /// Assets for water_drop
+  /// assets/icons/water_drop.svg
+  static const String water_drop = "assets/icons/water_drop.svg";
 
 }
