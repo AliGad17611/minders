@@ -28,25 +28,23 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animations: ^2.0.11
   cupertino_icons: ^1.0.8
+  equatable: ^2.0.7
   flutter:
     sdk: flutter
+  flutter_bloc: ^9.1.1
   flutter_svg: ^2.0.0
-
   google_fonts: ^6.3.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  intl: ^0.20.2
   time_picker_spinner: ^1.0.2
   animations: ^2.0.11
   introduction_screen: ^4.0.0
   percent_indicator: ^4.2.5
 
-
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
@@ -73,18 +71,18 @@ flutter_assets:
   filename: app_icons.dart
   classname: AppIcons
   field_prefix: null
-# flutter_assets:
-#   assets_path: assets/frames/
-#   output_path: lib/core/utils/assets/
-#   filename: app_frames.dart
-#   classname: AppFrames
-#   field_prefix: null
-# flutter_assets:
-#   assets_path: assets/images/
-#   output_path: lib/core/utils/assets/
-#   filename: app_images.dart
-#   classname: AppImages
-#   field_prefix: null
+  # flutter_assets:
+  #   assets_path: assets/frames/
+  #   output_path: lib/core/utils/assets/
+  #   filename: app_frames.dart
+  #   classname: AppFrames
+  #   field_prefix: null
+  # flutter_assets:
+  #   assets_path: assets/images/
+  #   output_path: lib/core/utils/assets/
+  #   filename: app_images.dart
+  #   classname: AppImages
+  #   field_prefix: null
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
