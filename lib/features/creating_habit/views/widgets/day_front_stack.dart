@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/core/utils/themes/app_text_styles.dart';
+import 'package:minders/features/common/custom_text_button.dart';
 import 'package:minders/features/creating_habit/views/widgets/time_spanner.dart';
 
 class DayFrontStack extends StatelessWidget {
@@ -37,22 +39,10 @@ class DayFrontStack extends StatelessWidget {
                 children: [
                   TimeSpanner(),
                   SizedBox(height: 20),
-                  TextButton(
-                    onPressed: buttonOnPressed,
-                    style: TextButton.styleFrom(
-                      backgroundColor: AppColors.whiteTextColors,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 55,
-                        vertical: 10,
-                      ),
-                    ),
-                    child: Text(
-                      "GET STARTED",
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.blackTextColors),
-                    ),
+                  CustomTextButton(
+                    buttonOnPressed: buttonOnPressed,
+                    text: "GET STARTED",
+                    textStyle: AppTextStyles.text16w500Black,
                   ),
                   SizedBox(height: 20),
                 ],

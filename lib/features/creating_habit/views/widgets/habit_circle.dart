@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:minders/core/utils/assets/app_frames.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
+import 'package:minders/features/creating_habit/manger/models/habit_model.dart';
 import 'package:minders/features/creating_habit/views/drink_water_view.dart';
 
 class HabitCircle extends StatelessWidget {
@@ -17,7 +18,15 @@ class HabitCircle extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const DrinkWaterView()),
+          MaterialPageRoute(builder: (context) => DrinkWaterView(
+            habit: HabitModel(
+              title: index % 2 == 0 ? "Drinking water" : "Morning Walk",
+              goalAmount: "0",
+              goalUnit: "ml",
+              selectedWeekDays: [],
+              timeOfDayToRepeat: 0,
+            ),
+          )),
         );
       },
       child: Column(

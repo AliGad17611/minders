@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/creating_habit/views/widgets/day_front_stack.dart';
-import 'package:minders/features/creating_habit/views/widgets/top_space.dart';
+import 'package:minders/features/common/top_space.dart';
 
 class DayView extends StatelessWidget {
   const DayView({

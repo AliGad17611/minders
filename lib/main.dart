@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
-import 'package:minders/features/registration/splash/splash_screen.dart';
+import 'package:minders/features/creating_habit/views/choice_habit_view.dart';
 
 void main() {
   runApp(const MindersApp());
@@ -20,7 +20,7 @@ class MindersApp extends StatelessWidget {
         scaffoldBackgroundColor: AppColors.purpleMain,
         textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
       ),
-      home: SplashScreen(),
+      home: ChoiceHabitView(),
     );
   }
 }
