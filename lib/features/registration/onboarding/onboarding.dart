@@ -5,6 +5,7 @@ import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/creating_habit/views/morning_view.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -27,7 +28,7 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
     );
     _slideAnimation = Tween<Offset>(
       begin: Offset.zero,
-      end: const Offset(-1.0, 0.0), // Both pages move left
+      end: const Offset(-1.0, 0.0),
     ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeInOut,
@@ -75,6 +76,11 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
                 right: 20,
                 child: _floatingActionButton(),
               ),
+              Positioned(
+                bottom: 20,
+                right: 20,
+                child: _floatingActionButton(),
+              ),
               SlideTransition(
                 position: _slideAnimation,
                 child: _onboardingContent(currentIndex),
@@ -93,6 +99,43 @@ class _OnboardingState extends State<Onboarding> with TickerProviderStateMixin {
             ],
           );
         },
+      ),
+    );
+  }
+
+  CircularPercentIndicator _floatingActionButton() {
+    return CircularPercentIndicator(
+      animation: true,
+      addAutomaticKeepAlive: true,
+      animateFromLastPercent: true,
+      animationDuration: 400,
+      radius: 30.0,
+      lineWidth: 2.0,
+      percent: (currentIndex + 1) / 5,
+      backgroundColor: Colors.transparent,
+      progressColor: AppColors.purpleGradient2,
+      center: InkWell(
+        onTap: _nextPage,
+        borderRadius: BorderRadius.circular(30),
+        child: Container(
+          margin: EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              colors: [
+                AppColors.purpleGradient1,
+                AppColors.purpleGradient2,
+              ],
+            ),
+          ),
+          child: Center(
+            child: Icon(
+              Icons.arrow_forward_ios,
+              size: 18,
+              color: AppColors.whiteTextColors,
+            ),
+          ),
+        ),
       ),
     );
   }
