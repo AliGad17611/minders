@@ -14,6 +14,7 @@ import 'package:minders/features/creating_habit/views/widgets/quantity_picker_mo
 import 'package:minders/features/creating_habit/views/widgets/quantity_unit_selector.dart';
 import 'package:minders/features/creating_habit/views/widgets/unit_picker_modal.dart';
 import 'package:minders/features/creating_habit/views/widgets/week_days_list_view.dart';
+import 'package:minders/features/dashboard/views/screens/dashboard_home.dart';
 
 class DrinkWaterView extends StatefulWidget {
   const DrinkWaterView({super.key, required this.habit});
@@ -38,7 +39,7 @@ class _DrinkWaterViewState extends State<DrinkWaterView> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ChoiceHabitView(),
+                builder: (context) => const DashboardHome(),
               ),
             );
           }

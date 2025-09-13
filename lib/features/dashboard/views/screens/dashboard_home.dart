@@ -156,6 +156,7 @@ class _DashboardHomeState extends State<DashboardHome>
       ),
     );
   }
+
   Widget _buildHealthGrid(HealthViewModel viewModel) {
     if (viewModel.targets.isEmpty) {
       return Container(
@@ -211,9 +212,6 @@ class _DashboardHomeState extends State<DashboardHome>
       },
     );
   }
-
-
-
 
   Widget _buildInteractiveHealthCard(
       dynamic target, HealthViewModel viewModel) {
@@ -518,7 +516,7 @@ class _DashboardHomeState extends State<DashboardHome>
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
-                          color: AppColors.purpleMain.withOpacity(0.1),
+                          color: AppColors.purpleMain.withValues(alpha: 0.1),
                           shape: BoxShape.circle,
                         ),
                         child: Center(
