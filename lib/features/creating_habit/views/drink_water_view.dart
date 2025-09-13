@@ -6,7 +6,6 @@ import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/creating_habit/manger/cubit/crating_habit_cubit.dart';
 import 'package:minders/features/creating_habit/manger/cubit/creating_habit_states.dart';
 import 'package:minders/features/creating_habit/manger/models/habit_model.dart';
-import 'package:minders/features/creating_habit/views/choice_habit_view.dart';
 import 'package:minders/features/common/top_space.dart';
 import 'package:minders/features/creating_habit/views/widgets/frequency_selection_buttons.dart';
 import 'package:minders/features/creating_habit/views/widgets/habit_continue_button.dart';
@@ -16,18 +15,9 @@ import 'package:minders/features/creating_habit/views/widgets/unit_picker_modal.
 import 'package:minders/features/creating_habit/views/widgets/week_days_list_view.dart';
 import 'package:minders/features/dashboard/views/screens/dashboard_home.dart';
 
-class DrinkWaterView extends StatefulWidget {
+class DrinkWaterView extends StatelessWidget {
   const DrinkWaterView({super.key, required this.habit});
   final HabitModel habit;
-
-  @override
-  State<DrinkWaterView> createState() => _DrinkWaterViewState();
-}
-
-class _DrinkWaterViewState extends State<DrinkWaterView> {
-  String selectedQuantity = "5";
-  String selectedUnit = "Glasses";
-  String selectedFrequency = "Daily";
 
   @override
   Widget build(BuildContext context) {
@@ -68,23 +58,13 @@ class _DrinkWaterViewState extends State<DrinkWaterView> {
                 SizedBox(height: 20),
                 BlocBuilder<CreatingHabitCubit, CreatingHabitStates>(
                   builder: (context, state) {
-                    String currentQuantity = selectedQuantity;
-                    String currentUnit = selectedUnit;
+                    String currentQuantity = habit.goalAmount;
+                    String currentUnit = habit.goalUnit;
 
                     // Update from cubit state if available
                     if (state is CreatingHabitDetailsSelectedState) {
                       currentQuantity = state.goalAmount;
                       currentUnit = state.goalUnit;
-
-                      // Update local state to stay in sync
-                      WidgetsBinding.instance.addPostFrameCallback((_) {
-                        if (mounted) {
-                          setState(() {
-                            selectedQuantity = state.goalAmount;
-                            selectedUnit = state.goalUnit;
-                          });
-                        }
-                      });
                     }
 
                     return QuantityUnitSelector(
@@ -98,12 +78,30 @@ class _DrinkWaterViewState extends State<DrinkWaterView> {
                   },
                 ),
                 SizedBox(height: 20),
-                FrequencySelectionButtons(
-                  selectedFrequency: selectedFrequency,
-                  onFrequencyChanged: (frequency) {
-                    setState(() {
-                      selectedFrequency = frequency;
-                    });
+                BlocBuilder<CreatingHabitCubit, CreatingHabitStates>(
+                  builder: (context, state) {
+                    // Default to Daily if no state is set yet
+                    String currentFrequency = "Daily";
+
+                    // Determine frequency from selected days in state
+                    if (state is CreatingHabitDetailsSelectedState) {
+                      if (state.selectedWeekDays.length == 7) {
+                        currentFrequency = "Daily";
+                      } else if (state.selectedWeekDays.length == 1) {
+                        currentFrequency = "Monthly";
+                      } else {
+                        currentFrequency = "Weekly";
+                      }
+                    }
+
+                    return FrequencySelectionButtons(
+                      selectedFrequency: currentFrequency,
+                      onFrequencyChanged: (frequency) {
+                        context
+                            .read<CreatingHabitCubit>()
+                            .updateFrequency(frequency);
+                      },
+                    );
                   },
                 ),
                 SizedBox(height: 30),
@@ -116,13 +114,44 @@ class _DrinkWaterViewState extends State<DrinkWaterView> {
                   ),
                 ),
                 SizedBox(height: 30),
-                WeekDaysListView(
-                  frequency: selectedFrequency,
+                BlocBuilder<CreatingHabitCubit, CreatingHabitStates>(
+                  builder: (context, state) {
+                    // Default to Daily if no state is set yet
+                    String currentFrequency = "Daily";
+
+                    // Determine frequency from selected days in state
+                    if (state is CreatingHabitDetailsSelectedState) {
+                      if (state.selectedWeekDays.length == 7) {
+                        currentFrequency = "Daily";
+                      } else if (state.selectedWeekDays.length == 1) {
+                        currentFrequency = "Monthly";
+                      } else {
+                        currentFrequency = "Weekly";
+                      }
+                    }
+
+                    return WeekDaysListView(
+                      frequency: currentFrequency,
+                    );
+                  },
                 ),
                 SizedBox(height: 30),
-                HabitContinueButton(
-                  selectedQuantity: selectedQuantity,
-                  selectedUnit: selectedUnit,
+                BlocBuilder<CreatingHabitCubit, CreatingHabitStates>(
+                  builder: (context, state) {
+                    String currentQuantity = habit.goalAmount;
+                    String currentUnit = habit.goalUnit;
+
+                    // Update from cubit state if available
+                    if (state is CreatingHabitDetailsSelectedState) {
+                      currentQuantity = state.goalAmount;
+                      currentUnit = state.goalUnit;
+                    }
+
+                    return HabitContinueButton(
+                      selectedQuantity: currentQuantity,
+                      selectedUnit: currentUnit,
+                    );
+                  },
                 ),
               ],
             ),
