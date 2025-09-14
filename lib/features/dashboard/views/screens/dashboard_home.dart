@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/features/creating_habit/views/morning_view.dart';
 import 'package:minders/features/dashboard/viewmodels/health_viewmodel.dart';
 import 'package:minders/features/dashboard/views/widgets/calender_widget.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +46,20 @@ class _DashboardHomeState extends State<DashboardHome> with TickerProviderStateM
     return Consumer<HealthViewModel>(
       builder: (context, viewModel, child) {
         return Scaffold(
+          drawer: Drawer(),
+          appBar: AppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MorningView()),
+                  );
+                },
+                icon: const Icon(Icons.add),
+              ),
+            ],
+          ),
           backgroundColor: const Color(0xFF6366F1),
           body: SafeArea(
             child: viewModel.isLoading
@@ -66,7 +81,6 @@ class _DashboardHomeState extends State<DashboardHome> with TickerProviderStateM
                           SliverToBoxAdapter(
                             child: Column(
                               children: [
-                                _buildHeader(viewModel),
                                 _buildDateSelector(),
                               ],
                             ),
@@ -100,37 +114,6 @@ class _DashboardHomeState extends State<DashboardHome> with TickerProviderStateM
           ),
         );
       },
-    );
-  }
-
-  Widget _buildHeader(HealthViewModel viewModel) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Good Morning',
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 16,
-                ),
-              ),
-              const Text(
-                'Let\'s track your habits!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 

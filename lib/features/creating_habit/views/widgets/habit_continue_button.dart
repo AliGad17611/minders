@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/creating_habit/manger/cubit/crating_habit_cubit.dart';
-import 'package:minders/features/creating_habit/views/morning_view.dart';
+import 'package:minders/features/dashboard/views/main_dashboard.dart';
 
 class HabitContinueButton extends StatelessWidget {
   const HabitContinueButton({
@@ -36,7 +36,7 @@ class HabitContinueButton extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const MorningView(),
+                builder: (context) => const MainDashboardScreen(),
               ),
             );
           },
@@ -45,8 +45,8 @@ class HabitContinueButton extends StatelessWidget {
           ),
           child: Text(
             "Continue",
-            style: AppTextStyles.text16w500Black
-                .copyWith(color: AppColors.grayTextColors),
+            style:
+                AppTextStyles.text16w500Black.copyWith(color: AppColors.grayTextColors),
           ),
         ),
       ),

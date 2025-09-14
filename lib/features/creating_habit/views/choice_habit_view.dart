@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-
 import 'package:minders/core/utils/themes/app_text_styles.dart';
-import 'package:minders/features/creating_habit/views/widgets/habit_circle.dart';
 import 'package:minders/features/common/top_space.dart';
+import 'package:minders/features/creating_habit/views/widgets/habit_circle.dart';
 
 class ChoiceHabitView extends StatelessWidget {
   const ChoiceHabitView({super.key});

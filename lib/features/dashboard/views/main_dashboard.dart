@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/features/dashboard/viewmodels/health_viewmodel.dart';
 import 'package:minders/features/dashboard/viewmodels/navigation_viewmodel.dart';
 import 'package:minders/features/dashboard/views/screens/dashboard_home.dart';
 import 'package:minders/features/dashboard/views/widgets/dashboard_screen.dart';
-import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:provider/provider.dart';
+
+class MainDashboardScreen extends StatelessWidget {
+  const MainDashboardScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => HealthViewModel()),
+        ChangeNotifierProvider(create: (_) => NavigationViewModel()),
+      ],
+      child: const MainDashboard(),
+    );
+  }
+}
 
 class MainDashboard extends StatefulWidget {
   const MainDashboard({super.key});
