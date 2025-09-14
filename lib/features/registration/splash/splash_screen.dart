@@ -5,7 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:minders/core/utils/assets/app_images.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
-import 'package:minders/features/creating_habit/views/morning_view.dart';
+import 'package:minders/features/dashboard/views/main_dashboard.dart';
 import 'package:minders/firebase_options.dart';
 
 import 'get_started_screen.dart';
@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   initializeApp() async {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    Future.delayed(const Duration(seconds: 2), checkAuth);
+    await Future.delayed(const Duration(seconds: 2), checkAuth);
   }
 
   @override
@@ -58,7 +58,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (user != null) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const MorningView()),
+        MaterialPageRoute(builder: (context) => const MainDashboard()),
       );
     } else {
       Navigator.pushReplacement(
