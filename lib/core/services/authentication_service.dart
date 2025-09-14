@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthenticationUseCases {
-  AuthenticationUseCases();
+class AuthenticationService {
+  AuthenticationService();
 
   Future<void> login(String email, String password) async {
     await FirebaseAuth.instance
@@ -18,11 +18,13 @@ class AuthenticationUseCases {
       throw Exception('User not created');
     }
 
-    await FirebaseFirestore.instance.collection('users').doc(user.user!.uid).set({
-      'id': user.user!.uid,
-      'userName': userName,
-      'email': email,
-    });
+    await FirebaseFirestore.instance.collection('users').doc(user.user!.uid).set(
+      {
+        'id': user.user!.uid,
+        'userName': userName,
+        'email': email,
+      },
+    );
 
     return;
   }

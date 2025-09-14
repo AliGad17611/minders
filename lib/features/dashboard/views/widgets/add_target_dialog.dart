@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../models/target_model.dart';
+import '../../../../core/models/target_model.dart';
 
 class AddTargetDialog extends StatefulWidget {
   final List<TargetModel> availableTemplates;

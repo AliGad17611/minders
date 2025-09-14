@@ -1,6 +1,6 @@
 
 import 'package:flutter/animation.dart';
-import 'package:minders/features/dashboard/models/health_data.dart';
+import 'package:minders/core/models/health_data.dart';
 
 class HealthService {
   static Future<List<HealthData>> getHealthData() async {

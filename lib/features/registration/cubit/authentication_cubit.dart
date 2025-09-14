@@ -3,13 +3,13 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
-import 'package:minders/features/domain/use_cases/authentication_use_cases.dart';
+import 'package:minders/core/services/authentication_service.dart';
 
 part 'authentication_state.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit() : super(AuthenticationInitial());
-  final AuthenticationUseCases authenticationUseCases = AuthenticationUseCases();
+  final AuthenticationService authenticationUseCases = AuthenticationService();
 
   void login(String email, String password) async {
     emit(AuthenticationLoading());

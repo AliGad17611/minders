@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../models/health_data.dart';
-import '../models/target_model.dart';
+import '../../../core/models/health_data.dart';
+import '../../../core/models/target_model.dart';
 import '../../../core/services/health_service.dart';
 
 class HealthViewModel extends ChangeNotifier {

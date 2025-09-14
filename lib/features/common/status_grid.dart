@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
-import 'package:minders/features/dashboard/models/status_model.dart';
+import 'package:minders/core/models/status_model.dart';
 
 class StatsGrid extends StatelessWidget {
   const StatsGrid({super.key, required this.stats});
