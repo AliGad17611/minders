@@ -17,26 +17,18 @@ class SignupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => AuthenticationCubit(),
-      child: Builder(
-        builder: (_) {
-          return BlocBuilder<AuthenticationCubit, AuthenticationState>(
-            builder: (context, state) {
-              bool isLoading = false;
-              if (state is AuthenticationLoading) {
-                isLoading = true;
-              }
-              if (state is AuthenticationSuccess) {
-                isLoading = false;
-                _successFlow(context);
-              }
-              if (state is AuthenticationFailure) {
-                isLoading = false;
-                _failureFlow(context, state);
-              }
+      child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
+        listener: (context, state) {
+          if (state is AuthenticationSuccess) {
+            _successFlow(context);
+          } else if (state is AuthenticationFailure) {
+            _failureFlow(context, state);
+          }
+        },
+        builder: (context, state) {
+          bool isLoading = state is AuthenticationLoading;
 
-              return _content(context, isLoading: isLoading);
-            },
-          );
+          return _content(context, isLoading: isLoading);
         },
       ),
     );
@@ -45,7 +37,7 @@ class SignupScreen extends StatelessWidget {
   void _failureFlow(BuildContext context, AuthenticationFailure state) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text(state.error),
+        content: Text(state.error, style: TextStyle(color: AppColors.whiteTextColors)),
         backgroundColor: AppColors.errorTextColors,
       ),
     );
@@ -61,11 +53,11 @@ class SignupScreen extends StatelessWidget {
 
   AuthFormScreen _content(BuildContext context, {bool isLoading = false}) {
     return AuthFormScreen(
-      title: 'Create your account ',
+      title: 'Create your account',
       middleText: 'OR SIGN UP WITH EMAIL',
       bottomText: ['ALREADY have an account? ', 'Sign in'],
       isLoading: isLoading,
-      form: SignupForm(
+      form: _SignupForm(
         onSubmit: context.read<AuthenticationCubit>().signup,
         isLoading: isLoading,
       ),
@@ -81,16 +73,16 @@ class SignupScreen extends StatelessWidget {
   }
 }
 
-class SignupForm extends StatefulWidget {
-  const SignupForm({super.key, this.onSubmit, this.isLoading = false});
+class _SignupForm extends StatefulWidget {
+  const _SignupForm({this.onSubmit, this.isLoading = false});
   final Function(String userName, String email, String password)? onSubmit;
   final bool isLoading;
 
   @override
-  State<SignupForm> createState() => _SignupFormState();
+  State<_SignupForm> createState() => _SignupFormState();
 }
 
-class _SignupFormState extends State<SignupForm> {
+class _SignupFormState extends State<_SignupForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   late final TextEditingController _emailController;
@@ -176,12 +168,12 @@ class _SignupFormState extends State<SignupForm> {
     );
   }
 
-  void _signUp() {
+  void _signUp() async {
     if (_formKey.currentState!.validate()) {
       final String userName = _userNameController.text;
       final String email = _emailController.text;
       final String password = _passwordController.text;
-      widget.onSubmit?.call(userName, email, password);
+      await widget.onSubmit?.call(userName, email, password);
     }
   }
 }

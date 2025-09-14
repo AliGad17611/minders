@@ -16,25 +16,17 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext _) {
     return BlocProvider(
       create: (_) => AuthenticationCubit(),
-      child: Builder(
-        builder: (context) {
-          bool isLoading = false;
-          return BlocListener<AuthenticationCubit, AuthenticationState>(
-            listener: (ctxt, state) {
-              if (state is AuthenticationLoading) {
-                isLoading = true;
-              }
-              if (state is AuthenticationSuccess) {
-                isLoading = false;
-                _successflow(ctxt);
-              }
-              if (state is AuthenticationFailure) {
-                isLoading = false;
-                _failureFLow(ctxt, state.error);
-              }
-            },
-            child: _loginContent(context, isLoading: isLoading),
-          );
+      child: BlocConsumer<AuthenticationCubit, AuthenticationState>(
+        listener: (context, state) {
+          if (state is AuthenticationSuccess) {
+            _successflow(context);
+          } else if (state is AuthenticationFailure) {
+            _failureFLow(context, state.error);
+          }
+        },
+        builder: (context, state) {
+          bool isLoading = state is AuthenticationLoading;
+          return _loginContent(context, isLoading: isLoading);
         },
       ),
     );
@@ -66,7 +58,7 @@ class LoginScreen extends StatelessWidget {
       middleText: 'OR LOG IN WITH EMAIL',
       bottomText: ['Don\'t have an account? ', 'Sign up'],
       isLoading: isLoading,
-      form: LoginForm(
+      form: _LoginForm(
         onSubmit: ctxt.read<AuthenticationCubit>().login,
       ),
       onChange: () {
@@ -79,16 +71,16 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-class LoginForm extends StatefulWidget {
-  const LoginForm({super.key, this.onSubmit});
+class _LoginForm extends StatefulWidget {
+  const _LoginForm({this.onSubmit});
 
   final Function(String email, String password)? onSubmit;
 
   @override
-  State<LoginForm> createState() => _LoginFormState();
+  State<_LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends State<_LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
