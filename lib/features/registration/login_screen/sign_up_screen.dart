@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
 import 'package:minders/core/utils/themes/app_text_styles.dart';
 import 'package:minders/features/common/custom_elevatedButton.dart';
 import 'package:minders/features/common/custom_text_form_field.dart';
+import 'package:minders/features/registration/cubit/authentication_cubit.dart';
 import 'package:minders/features/registration/onboarding/onboarding.dart';
 
 import 'auth_form.dart';
@@ -13,20 +15,59 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => AuthenticationCubit(),
+      child: Builder(
+        builder: (_) {
+          return BlocBuilder<AuthenticationCubit, AuthenticationState>(
+            builder: (context, state) {
+              bool isLoading = false;
+              if (state is AuthenticationLoading) {
+                isLoading = true;
+              }
+              if (state is AuthenticationSuccess) {
+                isLoading = false;
+                _successFlow(context);
+              }
+              if (state is AuthenticationFailure) {
+                isLoading = false;
+                _failureFlow(context, state);
+              }
+
+              return _content(context, isLoading: isLoading);
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  void _failureFlow(BuildContext context, AuthenticationFailure state) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(state.error),
+        backgroundColor: AppColors.errorTextColors,
+      ),
+    );
+  }
+
+  void _successFlow(BuildContext context) {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => Onboarding()),
+      (route) => false,
+    );
+  }
+
+  AuthFormScreen _content(BuildContext context, {bool isLoading = false}) {
     return AuthFormScreen(
       title: 'Create your account ',
       middleText: 'OR SIGN UP WITH EMAIL',
       bottomText: ['ALREADY have an account? ', 'Sign in'],
+      isLoading: isLoading,
       form: SignupForm(
-        onSubmit: () {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Onboarding(),
-            ),
-            (route) => false,
-          );
-        },
+        onSubmit: context.read<AuthenticationCubit>().signup,
+        isLoading: isLoading,
       ),
       onChange: () {
         Navigator.pushReplacement(
@@ -41,8 +82,9 @@ class SignupScreen extends StatelessWidget {
 }
 
 class SignupForm extends StatefulWidget {
-  const SignupForm({super.key, this.onSubmit});
-  final VoidCallback? onSubmit;
+  const SignupForm({super.key, this.onSubmit, this.isLoading = false});
+  final Function(String userName, String email, String password)? onSubmit;
+  final bool isLoading;
 
   @override
   State<SignupForm> createState() => _SignupFormState();
@@ -136,7 +178,10 @@ class _SignupFormState extends State<SignupForm> {
 
   void _signUp() {
     if (_formKey.currentState!.validate()) {
-      widget.onSubmit?.call();
+      final String userName = _userNameController.text;
+      final String email = _emailController.text;
+      final String password = _passwordController.text;
+      widget.onSubmit?.call(userName, email, password);
     }
   }
 }

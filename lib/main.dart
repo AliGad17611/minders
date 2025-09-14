@@ -1,9 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/core/utils/themes/app_themes.dart';
 import 'package:minders/features/registration/splash/splash_screen.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MindersApp());
 }
 
@@ -15,11 +22,7 @@ class MindersApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Minders App',
-      theme: ThemeData.dark().copyWith(
-        primaryColor: AppColors.purpleMain,
-        scaffoldBackgroundColor: AppColors.purpleMain,
-        textTheme: GoogleFonts.rubikTextTheme(ThemeData.dark().textTheme),
-      ),
+      theme: AppThemes.darkTheme,
       home: SplashScreen(),
     );
   }

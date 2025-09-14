@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:minders/features/dashboard/viewmodels/health_viewmodel.dart';
 import 'package:minders/core/utils/themes/app_colors.dart';
+import 'package:minders/features/dashboard/viewmodels/health_viewmodel.dart';
 import 'package:minders/features/dashboard/views/widgets/calender_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -12,8 +12,7 @@ class DashboardHome extends StatefulWidget {
   State<DashboardHome> createState() => _DashboardHomeState();
 }
 
-class _DashboardHomeState extends State<DashboardHome>
-    with TickerProviderStateMixin {
+class _DashboardHomeState extends State<DashboardHome> with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   int selectedDateIndex = 0;
@@ -213,8 +212,7 @@ class _DashboardHomeState extends State<DashboardHome>
     );
   }
 
-  Widget _buildInteractiveHealthCard(
-      dynamic target, HealthViewModel viewModel) {
+  Widget _buildInteractiveHealthCard(dynamic target, HealthViewModel viewModel) {
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -287,8 +285,7 @@ class _DashboardHomeState extends State<DashboardHome>
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 8),
-            _buildCircularProgress(
-                target.progressPercentage / 100, target.color),
+            _buildCircularProgress(target.progressPercentage / 100, target.color),
           ],
         ),
       ),

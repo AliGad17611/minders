@@ -3,6 +3,10 @@
 class AppFrames {
   AppFrames._();
 
+  /// Assets for congrats_girl
+  /// assets/frames/congrats_girl.svg
+  static const String congrats_girl = "assets/frames/congrats_girl.svg";
+
   /// Assets for g10
   /// assets/frames/g10.svg
   static const String g10 = "assets/frames/g10.svg";

@@ -14,11 +14,13 @@ class AuthFormScreen extends StatelessWidget {
     required this.bottomText,
     required this.form,
     this.onChange,
+    this.isLoading = false,
   });
+
   final String title;
   final String middleText;
   final List<String> bottomText;
-
+  final bool isLoading;
   final Widget form;
   final VoidCallback? onChange;
 
@@ -34,70 +36,22 @@ class AuthFormScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: SingleChildScrollView(
                 child: Column(
+                  spacing: 30,
                   children: [
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: Icon(Icons.arrow_back),
-                          style: IconButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(38),
-                              side: BorderSide(color: AppColors.borderSecondary),
-                            ),
-                            padding: EdgeInsets.all(18),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 28),
-                    Text(
-                      title,
-                      style: AppTextStyles.text28w700black,
-                    ),
-                    SizedBox(height: 33),
-                    CustomElevatedButton(
-                      title: "CONTINUE WITH FACEBOOK",
-                      preffixIcon: AppIcons.facebook,
-                      backgroundColor: Color(0xff7583CA),
-                      foregroundColor: AppColors.whiteTextColors,
-                      onPressed: () {},
-                    ),
-                    SizedBox(height: 20),
-                    CustomElevatedButton(
-                      title: "CONTINUE WITH GOOGLE",
-                      preffixIcon: AppIcons.google,
-                      onPressed: () {},
-                    ),
-                    SizedBox(height: 40),
-                    Text(
-                      middleText,
-                      style: AppTextStyles.text14w700Tertiary,
-                    ),
-                    SizedBox(height: 20),
+                    _returnButton(context),
+                    _title(),
+                    _continueWith(),
+                    _middleText(),
                     form,
-                    SizedBox(height: 30),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          bottomText[0],
-                          style: AppTextStyles.text14w500black.copyWith(
-                            color: AppColors.tertiaryTextColors,
-                          ),
+                    if (isLoading)
+                      const Center(
+                        child: SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(),
                         ),
-                        InkWell(
-                          onTap: onChange,
-                          child: Text(
-                            bottomText[1],
-                            style: AppTextStyles.text14w500black.copyWith(
-                              color: AppColors.purpleAccent,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 30),
+                      ),
+                    _bottomText(),
                   ],
                 ),
               ),
@@ -105,6 +59,81 @@ class AuthFormScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Text _title() {
+    return Text(
+      title,
+      style: AppTextStyles.text28w700black,
+    );
+  }
+
+  Row _returnButton(BuildContext context) {
+    return Row(
+      children: [
+        IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back),
+          style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(38),
+              side: BorderSide(color: AppColors.borderSecondary),
+            ),
+            padding: EdgeInsets.all(18),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Column _continueWith() {
+    return Column(
+      children: [
+        CustomElevatedButton(
+          title: "CONTINUE WITH FACEBOOK",
+          preffixIcon: AppIcons.facebook,
+          backgroundColor: Color(0xff7583CA),
+          foregroundColor: AppColors.whiteTextColors,
+          onPressed: () {},
+        ),
+        SizedBox(height: 20),
+        CustomElevatedButton(
+          title: "CONTINUE WITH GOOGLE",
+          preffixIcon: AppIcons.google,
+          onPressed: () {},
+        ),
+      ],
+    );
+  }
+
+  Text _middleText() {
+    return Text(
+      middleText,
+      style: AppTextStyles.text14w700Tertiary,
+    );
+  }
+
+  Row _bottomText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          bottomText[0],
+          style: AppTextStyles.text14w500black.copyWith(
+            color: AppColors.tertiaryTextColors,
+          ),
+        ),
+        InkWell(
+          onTap: onChange,
+          child: Text(
+            bottomText[1],
+            style: AppTextStyles.text14w500black.copyWith(
+              color: AppColors.purpleAccent,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
